@@ -1,13 +1,7 @@
 import { deserializeBlueprint } from 'factorio-blueprints/src/parsing/blueprintParser'
-import { blueprintContentSchema, type RawBlueprintData } from 'factorio-blueprints/src/schemas'
+import type { RawBlueprintData } from 'factorio-blueprints/src/schemas'
 import path from 'node:path'
-import { z } from 'zod'
-import { ParameterType, type Blueprint, type BlueprintParameter, type NumberParameter } from './types'
-import { blueprintSchema, type BlueprintSchema } from './schema'
-
-export const extendedBlueprintContentSchema = z.strictObject(blueprintContentSchema.extend({
-  wires: z.optional(z.array(z.array(z.number()))),
-}).shape)
+import { blueprintSchema, ParameterType, type BlueprintParameterSchema, type BlueprintSchema, type NumberParameterSchema } from './schema'
 
 /**
  * Parses a blueprint string, either encoded or raw JSON
@@ -53,7 +47,7 @@ export async function parseBlueprintFile(filePath: string, saveDecoded = false):
  * @param data - The data to check
  * @returns True if the data is a single blueprint, false otherwise
  */
-export const isSingleBlueprint = (data: unknown): data is Blueprint => {
+export const isSingleBlueprint = (data: unknown): data is BlueprintSchema => {
   const result = blueprintSchema.safeParse(data)
   return result.success
 }
@@ -63,9 +57,9 @@ export const isSingleBlueprint = (data: unknown): data is Blueprint => {
  * @param param - The parameter to check
  * @returns True if the parameter is a NumberParameter, false otherwise
  */
-export const isNumberParameter = (param: BlueprintParameter): param is NumberParameter => param.type === ParameterType.Number
+export const isNumberParameter = (param: BlueprintParameterSchema): param is NumberParameterSchema => param.type === ParameterType.Number
 
-export type BlueprintWithParameters = Blueprint & { parameters: BlueprintParameter[] }
+export type BlueprintWithParameters = BlueprintSchema & { parameters: BlueprintParameterSchema[] }
 
 export const isSingleBlueprintWithParameters = (data: unknown): data is BlueprintWithParameters => {
   if (!isSingleBlueprint(data)) return false
@@ -73,4 +67,3 @@ export const isSingleBlueprintWithParameters = (data: unknown): data is Blueprin
   if (!Array.isArray(data.parameters)) return false
   return true
 }
-

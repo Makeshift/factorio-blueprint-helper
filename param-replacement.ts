@@ -1,8 +1,7 @@
 import { walk } from 'walkjs'
 import z from 'zod'
-import type { Blueprint, NumberParameter } from './types'
-import { isNumberParameter, isSingleBlueprintWithParameters, type BlueprintWithParameters } from './util'
 import type { BlueprintSchema } from './schema'
+import { isNumberParameter, isSingleBlueprintWithParameters, type BlueprintWithParameters } from './util'
 
 /**
  * A mapping of unique parameter numbers to their desired 'release' definitions.

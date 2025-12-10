@@ -14,7 +14,10 @@ const paramMappings: ParameterMapping = {
   },
 }
 
-const { blueprint: releaseBlueprint, stats } = applyParameterReplacements(structuredClone(debugBlueprint), paramMappings)
+const { blueprint: releaseBlueprint, stats } = applyParameterReplacements(
+  structuredClone(debugBlueprint),
+  paramMappings
+)
 
 console.log(JSON.stringify(stats, null, 2))
 
