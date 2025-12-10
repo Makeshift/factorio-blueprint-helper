@@ -258,7 +258,7 @@ export type ColorRgbaSchema = typeof colorRgbaSchema.infer
 /** Selection constraints for filtering signal quality ranges. */
 export const qualityFilterSchema = type({
   /** Target quality to compare against; `null` matches any signal quality. */
-  'quality': 'string|null|undefined',
+  'quality': 'string | null | undefined',
   /** Comparison operator used when evaluating the selected quality. */
   'comparator?': comparatorSchema,
 })
@@ -267,13 +267,13 @@ export type QualityFilterSchema = typeof qualityFilterSchema.infer
 /** Serialized signal identifier. */
 export const signalIdSchema = type({
   /** Signal name; omitted entries are treated as no signal and stripped on round-trip. */
-  name: 'string|null|undefined',
+  name: 'string | null | undefined',
   /** Signal category (item, fluid, virtual, etc.). */
   type: signalTypeSchema,
   /** Signal quality flag. Defaults to normal when unspecified. */
-  quality: 'string|null|undefined',
+  quality: 'string | null | undefined',
   /** Comparator for quality ranges; only meaningful when quality is also provided. */
-  comparator: 'string|null|undefined',
+  comparator: 'string | null | undefined',
 })
 export type SignalIdSchema = typeof signalIdSchema.infer
 
@@ -290,17 +290,17 @@ export type CircuitNetworkSelectionSchema
 /** Simplified Draftsman condition payload used for logistic and circuit checks. */
 export const conditionSchema = type({
   /** Signal occupying the left-hand slot in the GUI. */
-  'first_signal': 'Record<string, unknown>|null|undefined',
+  'first_signal': 'Record<string, unknown> | null | undefined',
   /** Comparison operator controlling the condition. */
   'comparator?': comparatorSchema,
   /** Literal constant occupying the right-hand slot (overridden by second_signal). */
   'constant?': 'number',
   /** Optional signal occupying the right-hand slot; takes precedence over constant. */
-  'second_signal': 'Record<string, unknown>|null|undefined',
+  'second_signal': 'Record<string, unknown> | null | undefined',
   /** When true, copies operand counts from input wires instead of using constant values. */
   'count_from_input?': 'boolean',
   /** Quality discriminator used by quality-aware conditions. */
-  'quality': 'string|null|undefined',
+  'quality': 'string | null | undefined',
   /** Comparison operator used when evaluating quality ranges. */
   'quality_comparator?': comparatorSchema,
 })
@@ -309,17 +309,17 @@ export type ConditionSchema = typeof conditionSchema.infer
 /** Draftsman decider combinator condition payload. */
 export const deciderConditionSchema = type({
   /** Signal occupying the left-hand slot in the GUI. */
-  'first_signal': 'Record<string, unknown>|null|undefined',
+  'first_signal': 'Record<string, unknown> | null | undefined',
   /** Comparison operator controlling the condition. */
   'comparator?': comparatorSchema,
   /** Literal constant occupying the right-hand slot (overridden by second_signal). */
   'constant?': 'number',
   /** Optional signal occupying the right-hand slot; takes precedence over constant. */
-  'second_signal': 'Record<string, unknown>|null|undefined',
+  'second_signal': 'Record<string, unknown> | null | undefined',
   /** When true, copies operand counts from input wires instead of using constant values. */
   'count_from_input?': 'boolean',
   /** Quality discriminator used by quality-aware conditions. */
-  'quality': 'string|null|undefined',
+  'quality': 'string | null | undefined',
   /** Comparison operator used when evaluating quality ranges. */
   'quality_comparator?': comparatorSchema,
   /** Circuit network selection for the first operand. */
@@ -334,7 +334,7 @@ export type DeciderConditionSchema = typeof deciderConditionSchema.infer
 /** Draftsman decider combinator output payload. */
 export const deciderOutputSchema = type({
   /** Output signal emitted by the combinator. */
-  'signal': 'Record<string, unknown>|null|undefined',
+  'signal': 'Record<string, unknown> | null | undefined',
   /** Whether to source the output count from input wires. */
   'copy_count_from_input?': 'boolean',
   /** Circuit networks the output should read from when copying counts. */
@@ -347,21 +347,21 @@ export type DeciderOutputSchema = typeof deciderOutputSchema.infer
 /** Arithmetic combinator configuration payload. */
 export const arithmeticConditionSchema = type({
   /** First operand signal reference (if not using a constant). */
-  'first_signal': 'Record<string, unknown>|null|undefined',
+  'first_signal': 'Record<string, unknown> | null | undefined',
   /** Network selection for the first operand signal. */
   'first_signal_networks?': circuitNetworkSelectionSchema,
   /** First operand literal constant (used when first_signal is absent). */
-  'first_constant': 'number|null|undefined',
+  'first_constant': 'number | null | undefined',
   /** Second operand signal reference (if not using a constant). */
-  'second_signal': 'Record<string, unknown>|null|undefined',
+  'second_signal': 'Record<string, unknown> | null | undefined',
   /** Network selection for the second operand signal. */
   'second_signal_networks?': circuitNetworkSelectionSchema,
   /** Second operand literal constant (used when second_signal is absent). */
-  'second_constant': 'number|null|undefined',
+  'second_constant': 'number | null | undefined',
   /** Arithmetic operator applied between the two operands. */
   'operation?': arithmeticOperationSchema,
   /** Output signal receiving the computed result. */
-  'output_signal': 'Record<string, unknown>|null|undefined',
+  'output_signal': 'Record<string, unknown> | null | undefined',
   /** Network selection that determines which wires observe the output. */
   'output_signal_networks?': circuitNetworkSelectionSchema,
 })
@@ -372,17 +372,17 @@ export const signalFilterSchema = type({
   /** Index of the filter entry within the owning GUI list. */
   'index': 'number',
   /** Signal name being filtered, or null to represent an empty slot. */
-  'name': 'string|null|undefined',
+  'name': 'string | null | undefined',
   /** Numeric value of the filter (or lower bound when max_count is provided). */
-  'count': 'number|null|undefined',
+  'count': 'number | null | undefined',
   /** Specific signal type to enforce when multiple categories share a name. */
-  'type': 'string|null|undefined',
+  'type': 'string | null | undefined',
   /** Quality flag applied to the signal request/output. */
-  'quality': 'string|null|undefined',
+  'quality': 'string | null | undefined',
   /** Comparator used to evaluate counted ranges for the filter. */
   'comparator?': comparatorSchema,
   /** Upper bound when representing a range of counts. */
-  'max_count': 'number|null|undefined',
+  'max_count': 'number | null | undefined',
 })
 export type SignalFilterSchema = typeof signalFilterSchema.infer
 
@@ -393,13 +393,13 @@ export const itemFilterSchema = type({
   /** Item prototype name requested by this filter. */
   'name': 'string',
   /** Item count or lower bound for ranged comparisons. */
-  'count': 'number|null|undefined',
+  'count': 'number | null | undefined',
   /** Quality flag applied to the item. */
-  'quality': 'string|null|undefined',
+  'quality': 'string | null | undefined',
   /** Comparator used when bounding quality ranges. */
   'comparator?': comparatorSchema,
   /** Upper bound for ranged item counts. */
-  'max_count': 'number|null|undefined',
+  'max_count': 'number | null | undefined',
 })
 export type ItemFilterSchema = typeof itemFilterSchema.infer
 
@@ -421,7 +421,7 @@ export const alertParametersSchema = type({
   /** Alert type discriminator from Factorio's alert prototype table. */
   'alert_type': 'string',
   /** Icon used when presenting the alert. */
-  'icon_signal_id': 'Record<string, unknown>|null|undefined',
+  'icon_signal_id': 'Record<string, unknown> | null | undefined',
   /** Localised alert message. */
   'message?': 'string',
   /** Whether the alert should be shown on the world map. */
@@ -438,9 +438,9 @@ export const controlBehaviorSchema = type({
   /** Logistic condition attached to the entity (eg logistic chests). */
   'logistic_condition?': conditionSchema,
   /** One or more decider-style conditions backing the entity behaviour. */
-  'decider_conditions?': 'Record<string, unknown>|unknown[]',
+  'decider_conditions?': 'Record<string, unknown> | unknown[]',
   /** Definition of output behaviour for decider combinators. */
-  'decider_outputs?': 'Record<string, unknown>|unknown[]',
+  'decider_outputs?': 'Record<string, unknown> | unknown[]',
   /** Arithmetic combinator configuration. */
   'arithmetic_conditions?': arithmeticConditionSchema,
   /** Flat list of signal filters (legacy constant combinator format). */
@@ -481,7 +481,7 @@ export type EntityCircuitPortSchema = typeof entityCircuitPortSchema.infer
 
 /** Union of circuit- and power-wire connection payloads. */
 export const entityConnectionPortSchema = type(
-  'Record<string, unknown>|unknown[]',
+  'Record<string, unknown> | unknown[]',
 )
 export type EntityConnectionPortSchema = typeof entityConnectionPortSchema.infer
 
@@ -567,9 +567,9 @@ export const stockConnectionSchema = type({
   /** Entity number identifying the rolling stock being described. */
   stock: 'number',
   /** Entity number connected to the front coupler, if any. */
-  front: 'number|null|undefined',
+  front: 'number | null | undefined',
   /** Entity number connected to the rear coupler, if any. */
-  back: 'number|null|undefined',
+  back: 'number | null | undefined',
 })
 export type StockConnectionSchema = typeof stockConnectionSchema.infer
 
@@ -586,7 +586,7 @@ export const idParameterSchema = type({
   /** Quality constraint applied when resolving the signal. */
   'quality_condition?': qualityFilterSchema,
   /** Name of another parameter to inherit signal type information from. */
-  'ingredient_of': 'string|null|undefined',
+  'ingredient_of': 'string | null | undefined',
   /** Indicates whether the parameter is selectable during placement. */
   'parameter?': 'boolean',
 })
@@ -708,7 +708,7 @@ export const blueprintSchema = type({
   /** User-given title. Serialized. */
   'label?': 'string',
   /** Label color (RGBA 0..1). Serialized. */
-  'label_color': 'Record<string, unknown>|null|undefined',
+  'label_color': 'Record<string, unknown> | null | undefined',
   /** Description text (<=500 bytes). Serialized. */
   'description?': 'string',
   /** Up to 4 icons. Serialized. */
@@ -716,7 +716,7 @@ export const blueprintSchema = type({
   /** 64-bit encoded Factorio version. Serialized. */
   'version': 'number',
   /** Snapping grid size; presence enables snapping. Serialized. */
-  'snapping_grid_size': 'Record<string, unknown>|null|undefined',
+  'snapping_grid_size': 'Record<string, unknown> | null | undefined',
   /** Absolute vs relative snapping. Serialized. */
   'absolute_snapping?': 'boolean',
   /** Position relative to grid when absolute snapping is true. Serialized. */
