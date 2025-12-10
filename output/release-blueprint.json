@@ -1,0 +1,2844 @@
+{
+  "blueprint": {
+    "icons": [
+      {
+        "signal": {
+          "name": "train-stop"
+        },
+        "index": 1
+      },
+      {
+        "signal": {
+          "type": "entity",
+          "name": "item-on-ground"
+        },
+        "index": 2
+      },
+      {
+        "signal": {
+          "type": "virtual",
+          "name": "down-arrow"
+        },
+        "index": 3
+      },
+      {
+        "signal": {
+          "type": "virtual",
+          "name": "shape-horizontal"
+        },
+        "index": 4
+      }
+    ],
+    "entities": [
+      {
+        "entity_number": 1,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3562.5,
+          "y": -182.5
+        }
+      },
+      {
+        "entity_number": 2,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3567,
+          "y": -182.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            },
+            "second_constant": 288,
+            "operation": "+",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            }
+          }
+        },
+        "player_description": "Number of slots in the chests provided by this section"
+      },
+      {
+        "entity_number": 3,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3569.5,
+          "y": -182.5
+        }
+      },
+      {
+        "entity_number": 4,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3574,
+          "y": -182.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            },
+            "second_constant": 288,
+            "operation": "+",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            }
+          }
+        },
+        "player_description": "Number of slots in the chests provided by this section"
+      },
+      {
+        "entity_number": 5,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3576.5,
+          "y": -182.5
+        }
+      },
+      {
+        "entity_number": 6,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3565.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 7,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3565.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 8,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3567.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 9,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3566.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 10,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3566.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 11,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3567.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 12,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3569.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 13,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3568.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 14,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3568.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 15,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3569.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 16,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3570.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 17,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3570.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 18,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -181.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 19,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -180.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 20,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3573.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 21,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3572.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 22,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3572.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 23,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3573.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 24,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3575.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 25,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3574.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 26,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3574.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 27,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3575.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 28,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3577.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 29,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3576.5,
+          "y": -180.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 30,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3576.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 31,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3577.5,
+          "y": -181.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 32,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -181.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 33,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -180.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 34,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3565.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 35,
+        "name": "steel-chest",
+        "position": {
+          "x": 3565.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 36,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3564.5,
+          "y": -178.5
+        }
+      },
+      {
+        "entity_number": 37,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3567.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 38,
+        "name": "steel-chest",
+        "position": {
+          "x": 3567.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 39,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3566.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 40,
+        "name": "steel-chest",
+        "position": {
+          "x": 3566.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 41,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3569.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 42,
+        "name": "steel-chest",
+        "position": {
+          "x": 3569.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 43,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3568.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 44,
+        "name": "steel-chest",
+        "position": {
+          "x": 3568.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 45,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3570.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 46,
+        "name": "steel-chest",
+        "position": {
+          "x": 3570.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 47,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3571.5,
+          "y": -178.5
+        }
+      },
+      {
+        "entity_number": 48,
+        "name": "express-underground-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -179.5
+        },
+        "direction": 8,
+        "type": "input"
+      },
+      {
+        "entity_number": 49,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3573.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 50,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3572.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 51,
+        "name": "steel-chest",
+        "position": {
+          "x": 3573.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 52,
+        "name": "steel-chest",
+        "position": {
+          "x": 3572.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 53,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3575.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 54,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3574.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 55,
+        "name": "steel-chest",
+        "position": {
+          "x": 3575.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 56,
+        "name": "steel-chest",
+        "position": {
+          "x": 3574.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 57,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3577.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 58,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3576.5,
+          "y": -178.5
+        },
+        "direction": 8,
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 59,
+        "name": "steel-chest",
+        "position": {
+          "x": 3577.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 60,
+        "name": "steel-chest",
+        "position": {
+          "x": 3576.5,
+          "y": -179.5
+        }
+      },
+      {
+        "entity_number": 61,
+        "name": "constant-combinator",
+        "position": {
+          "x": 3579.5,
+          "y": -178.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "name": "parameter-0",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 123123
+                  },
+                  {
+                    "index": 2,
+                    "type": "virtual",
+                    "name": "signal-P",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 0
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "player_description": "0 - The item this drop-off is for\nP - Priority modifier, when not full"
+      },
+      {
+        "entity_number": 62,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3578.5,
+          "y": -178.5
+        }
+      },
+      {
+        "entity_number": 63,
+        "name": "express-underground-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -179.5
+        },
+        "direction": 8,
+        "type": "input"
+      },
+      {
+        "entity_number": 64,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3581,
+          "y": -178.5
+        },
+        "direction": 12,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_constant": 100,
+            "second_signal": {
+              "type": "virtual",
+              "name": "signal-percent"
+            },
+            "operation": "-",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-P"
+            }
+          }
+        },
+        "player_description": "(R) % filled\n100 - % = Station priority"
+      },
+      {
+        "entity_number": 65,
+        "name": "decider-combinator",
+        "position": {
+          "x": 3581,
+          "y": -179.5
+        },
+        "direction": 12,
+        "control_behavior": {
+          "decider_conditions": {
+            "conditions": [
+              {
+                "first_signal": {
+                  "type": "virtual",
+                  "name": "signal-P"
+                },
+                "comparator": ">"
+              }
+            ],
+            "outputs": [
+              {
+                "signal": {
+                  "type": "virtual",
+                  "name": "signal-L"
+                },
+                "copy_count_from_input": false
+              }
+            ]
+          }
+        },
+        "player_description": "If priority > 0, set L = 1 to allow one train to this station.\nIf priority =< 0, L = 0 by default, no trains allowed"
+      },
+      {
+        "entity_number": 66,
+        "name": "straight-rail",
+        "position": {
+          "x": 3565,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 67,
+        "name": "straight-rail",
+        "position": {
+          "x": 3567,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 68,
+        "name": "straight-rail",
+        "position": {
+          "x": 3569,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 69,
+        "name": "straight-rail",
+        "position": {
+          "x": 3571,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 70,
+        "name": "straight-rail",
+        "position": {
+          "x": 3573,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 71,
+        "name": "straight-rail",
+        "position": {
+          "x": 3575,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 72,
+        "name": "straight-rail",
+        "position": {
+          "x": 3577,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 73,
+        "name": "straight-rail",
+        "position": {
+          "x": 3579,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 74,
+        "name": "straight-rail",
+        "position": {
+          "x": 3581,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 75,
+        "name": "straight-rail",
+        "position": {
+          "x": 3583,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 76,
+        "name": "straight-rail",
+        "position": {
+          "x": 3585,
+          "y": -177
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 77,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3565.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 78,
+        "name": "steel-chest",
+        "position": {
+          "x": 3565.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 79,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3564.5,
+          "y": -175.5
+        }
+      },
+      {
+        "entity_number": 80,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3567.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 81,
+        "name": "steel-chest",
+        "position": {
+          "x": 3567.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 82,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3566.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 83,
+        "name": "steel-chest",
+        "position": {
+          "x": 3566.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 84,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3569.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 85,
+        "name": "steel-chest",
+        "position": {
+          "x": 3569.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 86,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3568.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 87,
+        "name": "steel-chest",
+        "position": {
+          "x": 3568.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 88,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3570.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 89,
+        "name": "steel-chest",
+        "position": {
+          "x": 3570.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 90,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3571.5,
+          "y": -175.5
+        }
+      },
+      {
+        "entity_number": 91,
+        "name": "express-underground-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -174.5
+        },
+        "direction": 8,
+        "type": "output"
+      },
+      {
+        "entity_number": 92,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3572.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 93,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3573.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 94,
+        "name": "steel-chest",
+        "position": {
+          "x": 3573.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 95,
+        "name": "steel-chest",
+        "position": {
+          "x": 3572.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 96,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3574.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 97,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3575.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 98,
+        "name": "steel-chest",
+        "position": {
+          "x": 3575.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 99,
+        "name": "steel-chest",
+        "position": {
+          "x": 3574.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 100,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3576.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 101,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3577.5,
+          "y": -175.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 102,
+        "name": "steel-chest",
+        "position": {
+          "x": 3577.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 103,
+        "name": "steel-chest",
+        "position": {
+          "x": 3576.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 104,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3578.5,
+          "y": -175.5
+        }
+      },
+      {
+        "entity_number": 105,
+        "name": "express-underground-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -174.5
+        },
+        "direction": 8,
+        "type": "output"
+      },
+      {
+        "entity_number": 106,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3579.5,
+          "y": -175
+        },
+        "direction": 8,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "name": "parameter-0"
+            },
+            "second_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            },
+            "operation": "*",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-T"
+            },
+            "first_signal_networks": {
+              "red": true,
+              "green": false
+            }
+          }
+        },
+        "player_description": "(R) Stack size of item *\n(G) Total number of slots in chests\n= Total amount of item if all chests are full"
+      },
+      {
+        "entity_number": 107,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3580.5,
+          "y": -175
+        },
+        "direction": 8,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-each"
+            },
+            "second_constant": 100,
+            "operation": "/",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-each"
+            }
+          }
+        },
+        "player_description": "(G) Total quantity of items if all slots are full\n/ 100 to get the divisor to use to convert the current amount to percentage\n(Normally you'd do G / qty * 100, but combinators can't do decimal so we need to do that bit earlier)"
+      },
+      {
+        "entity_number": 108,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3583.5,
+          "y": -174.5
+        }
+      },
+      {
+        "entity_number": 109,
+        "name": "train-stop",
+        "position": {
+          "x": 3585,
+          "y": -175
+        },
+        "direction": 4,
+        "control_behavior": {
+          "train_stopped_signal": {
+            "type": "virtual",
+            "name": "signal-T"
+          },
+          "set_trains_limit": true,
+          "trains_limit_signal": {
+            "type": "virtual",
+            "name": "signal-L"
+          },
+          "set_priority": true,
+          "priority_signal": {
+            "type": "virtual",
+            "name": "signal-P"
+          }
+        },
+        "station": "[item=parameter-0] Drop-Off"
+      },
+      {
+        "entity_number": 110,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3565.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 111,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3565.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 112,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3567.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 113,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3566.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 114,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3566.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 115,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3567.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 116,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3569.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 117,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3568.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 118,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3568.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 119,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3569.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 120,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3570.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 121,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -173.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 122,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -172.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 123,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3570.5,
+          "y": -172.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 124,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3573.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 125,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3572.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 126,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3572.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 127,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3573.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 128,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3575.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 129,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3574.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 130,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3574.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 131,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3575.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 132,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3577.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 133,
+        "name": "bulk-inserter",
+        "position": {
+          "x": 3576.5,
+          "y": -173.5
+        },
+        "control_behavior": {
+          "circuit_set_filters": true
+        },
+        "filters": [
+          {
+            "index": 1,
+            "name": "parameter-0",
+            "quality": "normal",
+            "comparator": "="
+          }
+        ],
+        "use_filters": true
+      },
+      {
+        "entity_number": 134,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3576.5,
+          "y": -172.5
+        },
+        "direction": 4
+      },
+      {
+        "entity_number": 135,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3577.5,
+          "y": -172.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 136,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -173.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 137,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -172.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 138,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3579.5,
+          "y": -173
+        },
+        "direction": 8,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-each"
+            },
+            "second_signal": {
+              "type": "virtual",
+              "name": "signal-T"
+            },
+            "operation": "/",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-percent"
+            },
+            "first_signal_networks": {
+              "red": true,
+              "green": false
+            },
+            "second_signal_networks": {
+              "red": false,
+              "green": true
+            }
+          }
+        },
+        "player_description": "(R) Current count of item\n(G) Count of item if all slots were full (after we divided by 100 for easier percentage calcs)\nR / G = Percentage full as decimal"
+      },
+      {
+        "entity_number": 139,
+        "name": "nixie-tube",
+        "position": {
+          "x": 3581.5,
+          "y": -173
+        },
+        "control_behavior": {
+          "circuit_enabled": true
+        },
+        "always_on": true
+      },
+      {
+        "entity_number": 140,
+        "name": "nixie-tube",
+        "position": {
+          "x": 3582.5,
+          "y": -173
+        },
+        "control_behavior": {
+          "circuit_enabled": true
+        },
+        "always_on": true
+      },
+      {
+        "entity_number": 141,
+        "name": "nixie-tube",
+        "position": {
+          "x": 3583.5,
+          "y": -173
+        },
+        "control_behavior": {
+          "circuit_enabled": true,
+          "circuit_condition": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-percent"
+            },
+            "constant": -2147483648,
+            "comparator": "≥"
+          }
+        },
+        "always_on": true
+      },
+      {
+        "entity_number": 142,
+        "name": "nixie-tube-alpha",
+        "position": {
+          "x": 3584.5,
+          "y": -173
+        },
+        "control_behavior": {
+          "circuit_condition": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-percent"
+            },
+            "constant": 0,
+            "comparator": "≠"
+          }
+        },
+        "always_on": true
+      },
+      {
+        "entity_number": 143,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3562.5,
+          "y": -171.5
+        }
+      },
+      {
+        "entity_number": 144,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3567,
+          "y": -171.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            },
+            "second_constant": 288,
+            "operation": "+",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            }
+          }
+        },
+        "player_description": "Number of slots in the chests provided by this section"
+      },
+      {
+        "entity_number": 145,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3569.5,
+          "y": -171.5
+        }
+      },
+      {
+        "entity_number": 146,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3571.5,
+          "y": -171.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 147,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3570.5,
+          "y": -171.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 148,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3574,
+          "y": -171.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            },
+            "second_constant": 288,
+            "operation": "+",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-C"
+            }
+          }
+        },
+        "player_description": "Number of slots in the chests provided by this section"
+      },
+      {
+        "entity_number": 149,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 3576.5,
+          "y": -171.5
+        }
+      },
+      {
+        "entity_number": 150,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3577.5,
+          "y": -171.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 151,
+        "name": "express-transport-belt",
+        "position": {
+          "x": 3578.5,
+          "y": -171.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 152,
+        "name": "constant-combinator",
+        "position": {
+          "x": 3579.5,
+          "y": -171.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "virtual",
+                    "name": "signal-percent",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 153,
+        "name": "textplate-small-copper",
+        "position": {
+          "x": 3581.5,
+          "y": -171.5
+        },
+        "direction": 4,
+        "variation": 8
+      },
+      {
+        "entity_number": 154,
+        "name": "textplate-small-copper",
+        "position": {
+          "x": 3582.5,
+          "y": -171.5
+        },
+        "direction": 4,
+        "variation": 23
+      },
+      {
+        "entity_number": 155,
+        "name": "textplate-small-copper",
+        "position": {
+          "x": 3583.5,
+          "y": -171.5
+        },
+        "direction": 4,
+        "variation": 14
+      },
+      {
+        "entity_number": 156,
+        "name": "textplate-small-copper",
+        "position": {
+          "x": 3584.5,
+          "y": -171.5
+        },
+        "direction": 4,
+        "variation": 14
+      }
+    ],
+    "wires": [
+      [
+        1,
+        5,
+        3,
+        5
+      ],
+      [
+        1,
+        5,
+        36,
+        5
+      ],
+      [
+        2,
+        4,
+        4,
+        2
+      ],
+      [
+        3,
+        5,
+        5,
+        5
+      ],
+      [
+        3,
+        5,
+        47,
+        5
+      ],
+      [
+        4,
+        4,
+        106,
+        2
+      ],
+      [
+        5,
+        5,
+        62,
+        5
+      ],
+      [
+        6,
+        2,
+        9,
+        2
+      ],
+      [
+        8,
+        2,
+        9,
+        2
+      ],
+      [
+        8,
+        2,
+        13,
+        2
+      ],
+      [
+        12,
+        2,
+        13,
+        2
+      ],
+      [
+        12,
+        2,
+        16,
+        2
+      ],
+      [
+        16,
+        2,
+        21,
+        2
+      ],
+      [
+        20,
+        2,
+        21,
+        2
+      ],
+      [
+        20,
+        2,
+        25,
+        2
+      ],
+      [
+        24,
+        2,
+        25,
+        2
+      ],
+      [
+        24,
+        2,
+        29,
+        2
+      ],
+      [
+        28,
+        2,
+        29,
+        2
+      ],
+      [
+        28,
+        2,
+        61,
+        2
+      ],
+      [
+        34,
+        2,
+        39,
+        2
+      ],
+      [
+        35,
+        1,
+        40,
+        1
+      ],
+      [
+        36,
+        5,
+        79,
+        5
+      ],
+      [
+        37,
+        2,
+        39,
+        2
+      ],
+      [
+        37,
+        2,
+        43,
+        2
+      ],
+      [
+        38,
+        1,
+        40,
+        1
+      ],
+      [
+        38,
+        1,
+        44,
+        1
+      ],
+      [
+        41,
+        2,
+        43,
+        2
+      ],
+      [
+        41,
+        2,
+        45,
+        2
+      ],
+      [
+        42,
+        1,
+        44,
+        1
+      ],
+      [
+        42,
+        1,
+        46,
+        1
+      ],
+      [
+        45,
+        2,
+        50,
+        2
+      ],
+      [
+        46,
+        1,
+        52,
+        1
+      ],
+      [
+        47,
+        5,
+        90,
+        5
+      ],
+      [
+        49,
+        2,
+        50,
+        2
+      ],
+      [
+        49,
+        2,
+        54,
+        2
+      ],
+      [
+        51,
+        1,
+        52,
+        1
+      ],
+      [
+        51,
+        1,
+        56,
+        1
+      ],
+      [
+        53,
+        2,
+        54,
+        2
+      ],
+      [
+        53,
+        2,
+        58,
+        2
+      ],
+      [
+        55,
+        1,
+        56,
+        1
+      ],
+      [
+        55,
+        1,
+        60,
+        1
+      ],
+      [
+        57,
+        2,
+        58,
+        2
+      ],
+      [
+        57,
+        2,
+        61,
+        2
+      ],
+      [
+        59,
+        1,
+        60,
+        1
+      ],
+      [
+        59,
+        1,
+        102,
+        1
+      ],
+      [
+        61,
+        1,
+        106,
+        1
+      ],
+      [
+        61,
+        1,
+        109,
+        1
+      ],
+      [
+        61,
+        2,
+        101,
+        2
+      ],
+      [
+        61,
+        2,
+        132,
+        2
+      ],
+      [
+        62,
+        5,
+        104,
+        5
+      ],
+      [
+        64,
+        1,
+        138,
+        3
+      ],
+      [
+        64,
+        3,
+        65,
+        1
+      ],
+      [
+        64,
+        3,
+        109,
+        1
+      ],
+      [
+        65,
+        4,
+        109,
+        2
+      ],
+      [
+        77,
+        2,
+        82,
+        2
+      ],
+      [
+        78,
+        1,
+        83,
+        1
+      ],
+      [
+        79,
+        5,
+        143,
+        5
+      ],
+      [
+        80,
+        2,
+        82,
+        2
+      ],
+      [
+        80,
+        2,
+        86,
+        2
+      ],
+      [
+        81,
+        1,
+        83,
+        1
+      ],
+      [
+        81,
+        1,
+        87,
+        1
+      ],
+      [
+        84,
+        2,
+        86,
+        2
+      ],
+      [
+        84,
+        2,
+        88,
+        2
+      ],
+      [
+        85,
+        1,
+        87,
+        1
+      ],
+      [
+        85,
+        1,
+        89,
+        1
+      ],
+      [
+        88,
+        2,
+        92,
+        2
+      ],
+      [
+        89,
+        1,
+        95,
+        1
+      ],
+      [
+        90,
+        5,
+        145,
+        5
+      ],
+      [
+        92,
+        2,
+        93,
+        2
+      ],
+      [
+        93,
+        2,
+        96,
+        2
+      ],
+      [
+        94,
+        1,
+        95,
+        1
+      ],
+      [
+        94,
+        1,
+        99,
+        1
+      ],
+      [
+        96,
+        2,
+        97,
+        2
+      ],
+      [
+        97,
+        2,
+        100,
+        2
+      ],
+      [
+        98,
+        1,
+        99,
+        1
+      ],
+      [
+        98,
+        1,
+        103,
+        1
+      ],
+      [
+        100,
+        2,
+        101,
+        2
+      ],
+      [
+        102,
+        1,
+        103,
+        1
+      ],
+      [
+        102,
+        1,
+        138,
+        1
+      ],
+      [
+        104,
+        2,
+        106,
+        2
+      ],
+      [
+        104,
+        5,
+        108,
+        5
+      ],
+      [
+        104,
+        5,
+        149,
+        5
+      ],
+      [
+        106,
+        2,
+        148,
+        4
+      ],
+      [
+        106,
+        4,
+        107,
+        2
+      ],
+      [
+        107,
+        4,
+        138,
+        2
+      ],
+      [
+        110,
+        2,
+        113,
+        2
+      ],
+      [
+        112,
+        2,
+        113,
+        2
+      ],
+      [
+        112,
+        2,
+        117,
+        2
+      ],
+      [
+        116,
+        2,
+        117,
+        2
+      ],
+      [
+        116,
+        2,
+        120,
+        2
+      ],
+      [
+        120,
+        2,
+        125,
+        2
+      ],
+      [
+        124,
+        2,
+        125,
+        2
+      ],
+      [
+        124,
+        2,
+        129,
+        2
+      ],
+      [
+        128,
+        2,
+        129,
+        2
+      ],
+      [
+        128,
+        2,
+        133,
+        2
+      ],
+      [
+        132,
+        2,
+        133,
+        2
+      ],
+      [
+        138,
+        3,
+        141,
+        1
+      ],
+      [
+        142,
+        1,
+        152,
+        1
+      ],
+      [
+        143,
+        5,
+        145,
+        5
+      ],
+      [
+        144,
+        4,
+        148,
+        2
+      ],
+      [
+        145,
+        5,
+        149,
+        5
+      ]
+    ],
+    "parameters": [
+      {
+        "type": "id",
+        "name": "Cargo",
+        "id": "parameter-0",
+        "quality-condition": {
+          "quality": "normal",
+          "comparator": "="
+        }
+      },
+      {
+        "type": "number",
+        "number": "0",
+        "name": "Stack Size",
+        "formula": "p0_s",
+        "dependent": true
+      },
+      {
+        "type": "number",
+        "number": "0",
+        "name": "Additional Priority"
+      }
+    ],
+    "item": "blueprint",
+    "label": "Horizontal Item Drop-Off Station",
+    "version": 562949958139904
+  }
+}
