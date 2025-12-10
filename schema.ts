@@ -1,121 +1,200 @@
 import { z } from 'zod'
 
-import type {
-  Blueprint,
-  JsonObject,
-  JsonValue,
-} from './types.js'
-import {
-  Comparator,
-  ParameterType,
-  QualityId,
-  WireConnectorId,
-} from './types.js'
+export enum SignalType {
+  /** Virtual-only signals such as letters, colors, and other UI icons (`draftsman.signatures.SignalID`). */
+  Virtual = 'virtual',
+  /** Signals that reference item prototypes from the Factorio item database. */
+  Item = 'item',
+  /** Signals representing fluid prototypes (e.g., steam, petroleum gas). */
+  Fluid = 'fluid',
+  /** Signals pointing to recipe prototypes for crafting combinators. */
+  Recipe = 'recipe',
+  /** Signals that encode entity prototypes (structures, units, rolling stock). */
+  Entity = 'entity',
+  /** Signals that select interstellar destinations for space platforms (Factorio 2.0). */
+  SpaceLocation = 'space-location',
+  /** Signals produced from asteroid chunk catalogues during space mining. */
+  AsteroidChunk = 'asteroid-chunk',
+  /** Dedicated quality signals used when filtering by `QualityID`. */
+  Quality = 'quality',
+}
 
-const signalTypeValues = [
-  'virtual',
-  'item',
-  'fluid',
-  'recipe',
-  'entity',
-  'space-location',
-  'asteroid-chunk',
-  'quality',
-] as const
+export enum ArithmeticOperation {
+  /** Multiply the first operand by the second (`draftsman.prototypes.arithmetic_combinator`). */
+  Multiply = '*',
+  /** Divide the first operand by the second, rounding toward zero. */
+  Divide = '/',
+  /** Add the two operands together. */
+  Add = '+',
+  /** Subtract the second operand from the first. */
+  Subtract = '-',
+  /** Compute the remainder of the first operand divided by the second. */
+  Modulo = '%',
+  /** Raise the first operand to the power of the second. */
+  Power = '^',
+  /** Bitwise left-shift the first operand by the second. */
+  ShiftLeft = '<<',
+  /** Bitwise right-shift the first operand by the second. */
+  ShiftRight = '>>',
+  /** Bitwise AND of both operands. */
+  And = 'AND',
+  /** Bitwise OR of both operands. */
+  Or = 'OR',
+  /** Bitwise XOR of both operands. */
+  Xor = 'XOR',
+}
 
-const arithmeticOperationValues = [
-  '*',
-  '/',
-  '+',
-  '-',
-  '%',
-  '^',
-  '<<',
-  '>>',
-  'AND',
-  'OR',
-  'XOR',
-] as const
+export enum WaitConditionType {
+  /** Triggered when all logistics requests at the current planet are satisfied. */
+  AllRequestsSatisfied = 'all_requests_satisfied',
+  /** Triggered if any planetary import request reaches zero. */
+  AnyPlanetImportZero = 'any_planet_import_zero',
+  /** Triggered when any request on the platform falls below its demand threshold. */
+  AnyRequestNotSatisfied = 'any_request_not_satisfied',
+  /** Triggered when any request on the platform hits zero. */
+  AnyRequestZero = 'any_request_zero',
+  /** Triggered when the vehicle is currently stopped at the named station. */
+  AtStation = 'at_station',
+  /** Triggered when the circuit condition assigned to the stop evaluates to true. */
+  Circuit = 'circuit',
+  /** Triggered once the space platform has taken damage past a configured limit. */
+  DamageTaken = 'damage_taken',
+  /** Triggered when the next destination has no space or no valid rail path. */
+  DestinationFullOrNoPath = 'destination_full_or_no_path',
+  /** Triggered when the vehicle's cargo inventory becomes empty. */
+  Empty = 'empty',
+  /** Triggered when the fluid cargo exceeds the supplied threshold. */
+  FluidCount = 'fluid_count',
+  /** Triggered when the fuel across all locomotives exceeds the given threshold. */
+  FuelItemCountAll = 'fuel_item_count_all',
+  /** Triggered when the fuel in any locomotive exceeds the given threshold. */
+  FuelItemCountAny = 'fuel_item_count_any',
+  /** Triggered when the vehicle's cargo inventory becomes full. */
+  Full = 'full',
+  /** Triggered when all locomotives are completely fuelled. */
+  FuelFull = 'fuel_full',
+  /** Triggered when the vehicle contains any cargo at all. */
+  NotEmpty = 'not_empty',
+  /** Triggered after the vehicle has been inactive for the configured number of ticks. */
+  Inactivity = 'inactivity',
+  /** Triggered when the vehicle holds at least the specified count of a given item. */
+  ItemCount = 'item_count',
+  /** Triggered while the train is not located at the named station. */
+  NotAtStation = 'not_at_station',
+  /** Triggered when a passenger is present aboard the train or platform. */
+  PassengerPresent = 'passenger_present',
+  /** Triggered when no passengers remain aboard the train or platform. */
+  PassengerNotPresent = 'passenger_not_present',
+  /** Triggered when a space platform request is satisfied. */
+  RequestSatisfied = 'request_satisfied',
+  /** Triggered when a space platform request is not satisfied. */
+  RequestNotSatisfied = 'request_not_satisfied',
+  /** Triggered when the specified station name is full. */
+  SpecificDestinationFull = 'specific_destination_full',
+  /** Triggered when the specified station name has room available. */
+  SpecificDestinationNotFull = 'specific_destination_not_full',
+  /** Triggered after the specified number of ticks elapses. */
+  Time = 'time',
+}
 
-const waitConditionTypeValues = [
-  'all_requests_satisfied',
-  'any_planet_import_zero',
-  'any_request_not_satisfied',
-  'any_request_zero',
-  'at_station',
-  'circuit',
-  'damage_taken',
-  'destination_full_or_no_path',
-  'empty',
-  'fluid_count',
-  'fuel_item_count_all',
-  'fuel_item_count_any',
-  'full',
-  'fuel_full',
-  'not_empty',
-  'inactivity',
-  'item_count',
-  'not_at_station',
-  'passenger_present',
-  'passenger_not_present',
-  'request_satisfied',
-  'request_not_satisfied',
-  'specific_destination_full',
-  'specific_destination_not_full',
-  'time',
-] as const
+export enum WaitConditionCompareType {
+  /** Chain the next wait condition with a Boolean AND. */
+  And = 'and',
+  /** Chain the next wait condition with a Boolean OR. */
+  Or = 'or',
+}
 
-const waitConditionCompareTypeValues = [
-  'and',
-  'or',
-] as const
+export enum RailDirection {
+  /** Train approaches or departs using its front (forward) direction. */
+  Front = 'front',
+  /** Train approaches or departs in reverse using its back direction. */
+  Back = 'back',
+}
 
-const railDirectionValues = [
-  'front',
-  'back',
-] as const
+export enum ComparatorSymbol {
+  /** Strictly greater-than comparison. */
+  Greater = '>',
+  /** Strictly less-than comparison. */
+  Less = '<',
+  /** Equality comparison using a single equals sign. */
+  Equal = '=',
+  /** Equality comparison using a double equals sign (legacy string form). */
+  DoubleEqual = '==',
+  /** Greater-than-or-equal comparison represented with the Unicode glyph. */
+  GreaterOrEqualUnicode = '≥',
+  /** Greater-than-or-equal comparison using ASCII characters. */
+  GreaterOrEqual = '>=',
+  /** Less-than-or-equal comparison represented with the Unicode glyph. */
+  LessOrEqualUnicode = '≤',
+  /** Less-than-or-equal comparison using ASCII characters. */
+  LessOrEqual = '<=',
+  /** Not-equal comparison represented with the Unicode glyph. */
+  NotEqualUnicode = '≠',
+  /** Not-equal comparison using ASCII characters. */
+  NotEqual = '!=',
+}
 
-const comparatorValues = [
-  Comparator.Greater,
-  Comparator.Less,
-  Comparator.Equal,
-  Comparator.DoubleEqual,
-  Comparator.GreaterOrEqualUnicode,
-  Comparator.GreaterOrEqual,
-  Comparator.LessOrEqualUnicode,
-  Comparator.LessOrEqual,
-  Comparator.NotEqualUnicode,
-  Comparator.NotEqual,
-] as const
+export enum QualityId {
+  /** Default quality tier produced without quality modules. */
+  Normal = 'normal',
+  /** First upgraded quality tier. */
+  Uncommon = 'uncommon',
+  /** Second upgraded quality tier. */
+  Rare = 'rare',
+  /** Third upgraded quality tier. */
+  Epic = 'epic',
+  /** Highest standard quality tier. */
+  Legendary = 'legendary',
+  /** Placeholder quality signal representing any/unknown quality. */
+  QualityUnknown = 'quality-unknown',
+}
 
-const qualityIdValues = [
-  QualityId.Normal,
-  QualityId.Uncommon,
-  QualityId.Rare,
-  QualityId.Epic,
-  QualityId.Legendary,
-  QualityId.QualityUnknown,
-] as const
+export enum ParameterType {
+  /** Parameter entry describing a signal substitution (`draftsman.signatures.IDParameter`). */
+  Id = 'id',
+  /** Parameter entry describing a numeric substitution (`draftsman.signatures.NumberParameter`). */
+  Number = 'number',
+}
 
-const parameterTypeValues = [
-  ParameterType.Id,
-  ParameterType.Number,
-] as const
+export enum WireConnectorId {
+  /** Red circuit input connector on combinators (WireConnectorID.COMBINATOR_INPUT_RED). */
+  CircuitInputRed = 1,
+  /** Green circuit input connector on combinators. */
+  CircuitInputGreen = 2,
+  /** Red circuit output connector on combinators. */
+  CircuitOutputRed = 3,
+  /** Green circuit output connector on combinators. */
+  CircuitOutputGreen = 4,
+  /** Copper connector shared by power poles and the left terminal of power switches. */
+  PoleCopper = 5,
+  /** Copper connector used by the right-hand terminal of power switches. */
+  PowerSwitchCopper = 6,
+}
 
-const comparatorSchema = z.enum(comparatorValues)
+const enumValues = <T extends Record<string, string>>(
+  enumObj: T,
+): [T[keyof T], ...Array<T[keyof T]>] =>
+  Object.values(enumObj) as [T[keyof T], ...Array<T[keyof T]>]
 
-const qualityIdSchema = z.enum(qualityIdValues)
+const comparatorSchema = z.enum(enumValues(ComparatorSymbol))
 
-const parameterTypeSchema = z.enum(parameterTypeValues)
+const qualityIdSchema = z.enum(enumValues(QualityId))
 
-const wireConnectorIdSchema = z.union([
-  z.literal(WireConnectorId.CircuitInputRed),
-  z.literal(WireConnectorId.CircuitInputGreen),
-  z.literal(WireConnectorId.CircuitOutputRed),
-  z.literal(WireConnectorId.CircuitOutputGreen),
-  z.literal(WireConnectorId.PoleCopper),
-  z.literal(WireConnectorId.PowerSwitchCopper),
-])
+const parameterTypeSchema = z.enum(enumValues(ParameterType))
+
+const signalTypeSchema = z.enum(enumValues(SignalType))
+
+const arithmeticOperationSchema = z.enum(enumValues(ArithmeticOperation))
+
+const waitConditionTypeSchema = z.enum(enumValues(WaitConditionType))
+
+const waitConditionCompareTypeSchema = z.enum(
+  enumValues(WaitConditionCompareType),
+)
+
+const railDirectionSchema = z.enum(enumValues(RailDirection))
+
+const wireConnectorIdSchema = z.enum(WireConnectorId)
 
 const blueprintIconIndexSchema = z.union([
   z.literal(1),
@@ -124,16 +203,6 @@ const blueprintIconIndexSchema = z.union([
   z.literal(4),
 ])
 
-const signalTypeSchema = z.enum(signalTypeValues)
-
-const arithmeticOperationSchema = z.enum(arithmeticOperationValues)
-
-const waitConditionTypeSchema = z.enum(waitConditionTypeValues)
-
-const waitConditionCompareTypeSchema = z.enum(waitConditionCompareTypeValues)
-
-const railDirectionSchema = z.enum(railDirectionValues)
-
 const jsonPrimitiveSchema = z.union([
   z.string(),
   z.number(),
@@ -141,17 +210,19 @@ const jsonPrimitiveSchema = z.union([
   z.null(),
 ])
 
-export const jsonObjectSchema: z.ZodType<JsonObject> = z.lazy(() =>
-  z.record(z.string(), jsonValueSchema),
-)
+export const jsonObjectSchema = z.record(z.string(), z.unknown())
 
-export const jsonValueSchema: z.ZodType<JsonValue> = z.lazy(() =>
-  z.union([
-    jsonPrimitiveSchema,
-    z.array(jsonValueSchema),
-    jsonObjectSchema,
-  ]),
-)
+export type JsonObjectSchema = z.output<typeof jsonObjectSchema>
+export type JsonObject = JsonObjectSchema
+
+export const jsonValueSchema = z.union([
+  jsonPrimitiveSchema,
+  z.array(z.unknown()),
+  jsonObjectSchema,
+])
+
+export type JsonValueSchema = z.output<typeof jsonValueSchema>
+export type JsonValue = JsonValueSchema
 
 /** Two-dimensional position measured in tiles. */
 export const vector2Schema = z.object({
@@ -160,6 +231,8 @@ export const vector2Schema = z.object({
   /** Vertical component measured in tiles. */
   y: z.number(),
 })
+
+export type Vector2Schema = z.output<typeof vector2Schema>
 
 /** RGBA colour object encoded as floats or bytes (Factorio format). */
 export const colorRgbaSchema = z.object({
@@ -173,6 +246,8 @@ export const colorRgbaSchema = z.object({
   a: z.number().optional(),
 })
 
+export type ColorRgbaSchema = z.output<typeof colorRgbaSchema>
+
 /** Selection constraints for filtering signal quality ranges. */
 export const qualityFilterSchema = z.object({
   /** Target quality to compare against; `null` matches any signal quality. */
@@ -180,6 +255,8 @@ export const qualityFilterSchema = z.object({
   /** Comparison operator used when evaluating the selected quality. */
   comparator: comparatorSchema.optional(),
 })
+
+export type QualityFilterSchema = z.output<typeof qualityFilterSchema>
 
 /** Serialized signal identifier. */
 export const signalIdSchema = z.object({
@@ -193,6 +270,8 @@ export const signalIdSchema = z.object({
   comparator: comparatorSchema.nullish(),
 })
 
+export type SignalIdSchema = z.output<typeof signalIdSchema>
+
 /** Circuit network selection toggles derived from Draftsman. */
 export const circuitNetworkSelectionSchema = z.object({
   /** Whether to draw values from the red circuit wire. */
@@ -200,6 +279,10 @@ export const circuitNetworkSelectionSchema = z.object({
   /** Whether to draw values from the green circuit wire. */
   green: z.boolean().optional(),
 })
+
+export type CircuitNetworkSelectionSchema = z.output<
+  typeof circuitNetworkSelectionSchema
+>
 
 /** Simplified Draftsman condition payload used for logistic and circuit checks. */
 export const conditionSchema = z.object({
@@ -219,6 +302,8 @@ export const conditionSchema = z.object({
   quality_comparator: comparatorSchema.optional(),
 })
 
+export type ConditionSchema = z.output<typeof conditionSchema>
+
 /** Draftsman decider combinator condition payload. */
 export const deciderConditionSchema = conditionSchema.extend({
   /** Circuit network selection for the first operand. */
@@ -228,6 +313,8 @@ export const deciderConditionSchema = conditionSchema.extend({
   /** Boolean operator used when chaining wait conditions. */
   compare_type: waitConditionCompareTypeSchema.optional(),
 })
+
+export type DeciderConditionSchema = z.output<typeof deciderConditionSchema>
 
 /** Draftsman decider combinator output payload. */
 export const deciderOutputSchema = z.object({
@@ -240,6 +327,8 @@ export const deciderOutputSchema = z.object({
   /** Constant value emitted when copy_count_from_input is false. */
   constant: z.number().optional(),
 })
+
+export type DeciderOutputSchema = z.output<typeof deciderOutputSchema>
 
 /** Arithmetic combinator configuration payload. */
 export const arithmeticConditionSchema = z.object({
@@ -263,6 +352,10 @@ export const arithmeticConditionSchema = z.object({
   output_signal_networks: circuitNetworkSelectionSchema.optional(),
 })
 
+export type ArithmeticConditionSchema = z.output<
+  typeof arithmeticConditionSchema
+>
+
 /** Signal filter entry used by constant combinators and logistic sections. */
 export const signalFilterSchema = z.object({
   /** Index of the filter entry within the owning GUI list. */
@@ -281,6 +374,8 @@ export const signalFilterSchema = z.object({
   max_count: z.number().nullish(),
 })
 
+export type SignalFilterSchema = z.output<typeof signalFilterSchema>
+
 /** Item filter entry used by inserters and requester chests. */
 export const itemFilterSchema = z.object({
   /** Index of the filter entry within the owning GUI list. */
@@ -297,6 +392,8 @@ export const itemFilterSchema = z.object({
   max_count: z.number().nullish(),
 })
 
+export type ItemFilterSchema = z.output<typeof itemFilterSchema>
+
 /** Manual signal section exported by constant combinators (Factorio 2.0). */
 export const manualSectionSchema = z.object({
   /** Section index within the constant combinator (0 ≤ index < 100). */
@@ -308,6 +405,8 @@ export const manualSectionSchema = z.object({
   /** Whether the section currently contributes to the output. */
   active: z.boolean().optional(),
 })
+
+export type ManualSectionSchema = z.output<typeof manualSectionSchema>
 
 /** Alert configuration serialised alongside certain entities. */
 export const alertParametersSchema = z.object({
@@ -322,6 +421,8 @@ export const alertParametersSchema = z.object({
   /** Prototype-specific extension data. */
   additional_properties: jsonObjectSchema.optional(),
 })
+
+export type AlertParametersSchema = z.output<typeof alertParametersSchema>
 
 /** Control behaviour bag used across multiple entity classes. */
 export const controlBehaviorSchema = z.object({
@@ -349,9 +450,9 @@ export const controlBehaviorSchema = z.object({
   filters: z.array(signalFilterSchema).optional(),
   /** Factorio 2.0 manual sections. */
   sections: z.array(manualSectionSchema).optional(),
-  /** Prototype-specific or mod-added control properties. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type ControlBehaviorSchema = z.output<typeof controlBehaviorSchema>
 
 /** Circuit network connection description to another entity. */
 export const circuitWireConnectionSchema = z.object({
@@ -363,6 +464,10 @@ export const circuitWireConnectionSchema = z.object({
   wire_id: z.number().optional(),
 })
 
+export type CircuitWireConnectionSchema = z.output<
+  typeof circuitWireConnectionSchema
+>
+
 /** Power network connection description to another entity. */
 export const powerWireConnectionSchema = z.object({
   /** Target entity number receiving the wire connection. */
@@ -370,6 +475,10 @@ export const powerWireConnectionSchema = z.object({
   /** Source connector identifier when multiple sockets exist. */
   wire_id: z.number().optional(),
 })
+
+export type PowerWireConnectionSchema = z.output<
+  typeof powerWireConnectionSchema
+>
 
 /** Port definition for a specific connection point. */
 export const entityCircuitPortSchema = z.object({
@@ -379,17 +488,27 @@ export const entityCircuitPortSchema = z.object({
   green: z.array(circuitWireConnectionSchema).optional(),
 })
 
+export type EntityCircuitPortSchema = z.output<
+  typeof entityCircuitPortSchema
+>
+
 /** Union of circuit- and power-wire connection payloads. */
 export const entityConnectionPortSchema = z.union([
   entityCircuitPortSchema,
   z.array(powerWireConnectionSchema),
 ])
 
+export type EntityConnectionPortSchema = z.output<
+  typeof entityConnectionPortSchema
+>
+
 /** Map of connection point identifiers to wire definitions. */
 export const entityConnectionsSchema = z.record(
   z.string(),
   entityConnectionPortSchema,
 )
+
+export type EntityConnectionsSchema = z.output<typeof entityConnectionsSchema>
 
 /** Sparse array representing a Factorio 2.0 wire connection. */
 export const blueprintWireSchema = z
@@ -400,6 +519,8 @@ export const blueprintWireSchema = z
     wireConnectorIdSchema,
   ])
   .readonly()
+
+export type BlueprintWireSchema = z.output<typeof blueprintWireSchema>
 
 /** Wait condition definition in train schedules. */
 export const waitConditionSchema = z.object({
@@ -413,9 +534,9 @@ export const waitConditionSchema = z.object({
   ticks: z.number().optional(),
   /** Circuit/logistic condition payload when `type` is `circuit` or count-based. */
   condition: conditionSchema.optional(),
-  /** Mod-specific extension information. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type WaitConditionSchema = z.output<typeof waitConditionSchema>
 
 /** Single schedule record (stop) entry. */
 export const trainScheduleRecordSchema = z.object({
@@ -433,9 +554,11 @@ export const trainScheduleRecordSchema = z.object({
   allows_unloading: z.boolean().optional(),
   /** Sequence of wait conditions evaluated at this stop. */
   wait_conditions: z.array(waitConditionSchema).optional(),
-  /** Mod-specific extension block. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type TrainScheduleRecordSchema = z.output<
+  typeof trainScheduleRecordSchema
+>
 
 /** Train schedule interrupt entry (Factorio 2.0). */
 export const trainScheduleInterruptSchema = z.object({
@@ -447,9 +570,11 @@ export const trainScheduleInterruptSchema = z.object({
   targets: z.array(trainScheduleRecordSchema).optional(),
   /** Indicates whether nested interrupts are being resolved. */
   inside_interrupt: z.boolean().optional(),
-  /** Mod-specific extension block. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type TrainScheduleInterruptSchema = z.output<
+  typeof trainScheduleInterruptSchema
+>
 
 /** Complete train schedule definition. */
 export const trainScheduleSchema = z.object({
@@ -457,9 +582,9 @@ export const trainScheduleSchema = z.object({
   records: z.array(trainScheduleRecordSchema),
   /** Optional interrupts evaluated alongside the base schedule. */
   interrupts: z.array(trainScheduleInterruptSchema).optional(),
-  /** Mod-specific extension block. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type TrainScheduleSchema = z.output<typeof trainScheduleSchema>
 
 /** Assignment of a schedule to one or more locomotives. */
 export const trainScheduleAssignmentSchema = z.object({
@@ -469,9 +594,11 @@ export const trainScheduleAssignmentSchema = z.object({
   schedule: trainScheduleSchema,
   /** Additional rolling stock indices included in the assignment. */
   rolling_stock: z.array(z.number()).optional(),
-  /** Mod-specific extension block. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type TrainScheduleAssignmentSchema = z.output<
+  typeof trainScheduleAssignmentSchema
+>
 
 /** Train coupling information used by Factorio 2.0 blueprints. */
 export const stockConnectionSchema = z.object({
@@ -481,9 +608,9 @@ export const stockConnectionSchema = z.object({
   front: z.number().nullish(),
   /** Entity number connected to the rear coupler, if any. */
   back: z.number().nullish(),
-  /** Mod-specific extension block. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type StockConnectionSchema = z.output<typeof stockConnectionSchema>
 
 const parameterBaseSchema = z.object({
   /** Discriminator describing the parameter structure. */
@@ -507,6 +634,8 @@ export const idParameterSchema = parameterBaseSchema.extend({
   parameter: z.boolean().optional(),
 })
 
+export type IdParameterSchema = z.output<typeof idParameterSchema>
+
 /** Blueprint parameter specification representing a numeric substitution. */
 export const numberParameterSchema = parameterBaseSchema.extend({
   type: z.literal(ParameterType.Number),
@@ -522,11 +651,15 @@ export const numberParameterSchema = parameterBaseSchema.extend({
   dependent: z.boolean().optional(),
 })
 
+export type NumberParameterSchema = z.output<typeof numberParameterSchema>
+
 /** Union of all supported blueprint parameter specifications. */
 export const blueprintParameterSchema = z.discriminatedUnion('type', [
   idParameterSchema,
   numberParameterSchema,
 ])
+
+export type BlueprintParameterSchema = z.output<typeof blueprintParameterSchema>
 
 /** Blueprint tile definition. */
 export const blueprintTileSchema = z.object({
@@ -536,9 +669,9 @@ export const blueprintTileSchema = z.object({
   position: vector2Schema,
   /** Optional tile orientation (used by hazard concrete). */
   direction: z.number().optional(),
-  /** Mod-specific extension block. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type BlueprintTileSchema = z.output<typeof blueprintTileSchema>
 
 /** Icon metadata for blueprints and planner items. */
 export const blueprintIconSchema = z.object({
@@ -547,6 +680,8 @@ export const blueprintIconSchema = z.object({
   /** Signal displayed in the icon slot. */
   signal: signalIdSchema,
 })
+
+export type BlueprintIconSchema = z.output<typeof blueprintIconSchema>
 
 /** Blueprint entity definition (heavily specialised per prototype). */
 export const blueprintEntitySchema = z.object({
@@ -604,15 +739,15 @@ export const blueprintEntitySchema = z.object({
   item_requests: z.record(z.string(), z.number()).optional(),
   /** Stack size override applied to stack inserters. */
   stack_size_override: z.number().optional(),
-  /** Prototype-specific or mod-added metadata. */
-  custom_properties: jsonObjectSchema.optional(),
 })
+
+export type BlueprintEntitySchema = z.output<typeof blueprintEntitySchema>
 
 /**
  * Factorio Blueprint, adapted from `draftsman.classes.blueprint.Blueprint`.
  * Represents the JSON structure under the root key `blueprint`.
  */
-export const blueprintSchema: z.ZodType<Blueprint> = z.object({
+export const blueprintSchema = z.object({
   /** Always `'blueprint'`. Serialized. */
   item: z.literal('blueprint'),
   /** User-given title. Serialized. */
@@ -645,8 +780,6 @@ export const blueprintSchema: z.ZodType<Blueprint> = z.object({
   stock_connections: z.array(stockConnectionSchema).optional(),
   /** Additional groups or metadata present in Draftsman exports. */
   groups: z.array(jsonObjectSchema).optional(),
-  /** Reserved for forward-compatible metadata. */
-  custom_properties: jsonObjectSchema.optional(),
 })
 
-export type BlueprintSchema = typeof blueprintSchema
+export type BlueprintSchema = z.output<typeof blueprintSchema>

@@ -2,6 +2,7 @@ import { walk } from 'walkjs'
 import z from 'zod'
 import type { Blueprint, NumberParameter } from './types'
 import { isNumberParameter, isSingleBlueprintWithParameters, type BlueprintWithParameters } from './util'
+import type { BlueprintSchema } from './schema'
 
 /**
  * A mapping of unique parameter numbers to their desired 'release' definitions.
@@ -33,7 +34,7 @@ interface Stats {
  * @param blueprint
  * @param mappings
  */
-export function applyParameterReplacements(blueprint: Blueprint, mappings: ParameterMapping) {
+export function applyParameterReplacements(blueprint: BlueprintSchema, mappings: ParameterMapping) {
   const stats: Stats = {
     blueprints: 0,
     parameters: 0,

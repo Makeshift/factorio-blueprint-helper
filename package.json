@@ -13,6 +13,7 @@
   "dependencies": {
     "@makeshift27015/eslint-config": "^1.2.1",
     "@types/traverse": "^0.6.37",
+    "arktype": "^2.1.28",
     "factorio-blueprint": "^2.6.5",
     "factorio-blueprints": "git@github.com:FactorioBlueprints/factorio-prints.git",
     "luaparse": "^0.3.1",

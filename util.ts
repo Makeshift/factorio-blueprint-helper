@@ -3,6 +3,7 @@ import { blueprintContentSchema, type RawBlueprintData } from 'factorio-blueprin
 import path from 'node:path'
 import { z } from 'zod'
 import { ParameterType, type Blueprint, type BlueprintParameter, type NumberParameter } from './types'
+import { blueprintSchema, type BlueprintSchema } from './schema'
 
 export const extendedBlueprintContentSchema = z.strictObject(blueprintContentSchema.extend({
   wires: z.optional(z.array(z.array(z.number()))),
@@ -53,7 +54,7 @@ export async function parseBlueprintFile(filePath: string, saveDecoded = false):
  * @returns True if the data is a single blueprint, false otherwise
  */
 export const isSingleBlueprint = (data: unknown): data is Blueprint => {
-  const result = extendedBlueprintContentSchema.safeParse(data)
+  const result = blueprintSchema.safeParse(data)
   return result.success
 }
 
@@ -72,3 +73,4 @@ export const isSingleBlueprintWithParameters = (data: unknown): data is Blueprin
   if (!Array.isArray(data.parameters)) return false
   return true
 }
+
