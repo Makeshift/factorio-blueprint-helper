@@ -180,55 +180,39 @@ export enum WireConnectorId {
 // ============================================================================
 
 const comparatorSchema = type(
-  '\'>\'|\'<\'|\'=\'|\'==\'|\'≥\'|\'>=\'|\'≤\'|\'<=\'|\'≠\'|\'!=\'',
+  '\'>\' | \'<\' | \'=\' | \'==\' | \'≥\' | \'>=\' | \'≤\' | \'<=\' | \'≠\' | \'!=\'',
 )
-export type Comparator = typeof comparatorSchema.infer
 
 const qualityIdSchema = type(
-  '\'normal\'|\'uncommon\'|\'rare\'|\'epic\'|\'legendary\'|\'quality-unknown\'',
+  '\'normal\' | \'uncommon\' | \'rare\' | \'epic\' | \'legendary\' | \'quality-unknown\'',
 )
-export type QualityIdType = typeof qualityIdSchema.infer
-
-const parameterTypeSchema = type('\'id\'|\'number\'')
-export type ParameterTypeType = typeof parameterTypeSchema.infer
 
 const signalTypeSchema = type(
-  '\'virtual\'|\'item\'|\'fluid\'|\'recipe\'|\'entity\'|\'space-location\'|\'asteroid-chunk\'|\'quality\'',
+  '\'virtual\' | \'item\' | \'fluid\' | \'recipe\' | \'entity\' | \'space-location\' | \'asteroid-chunk\' | \'quality\'',
 )
-export type SignalTypeType = typeof signalTypeSchema.infer
 
 const arithmeticOperationSchema = type(
-  '\'*\'|\'/\'|\'+\'|\'-\'|\'%\'|\'^\'|\'<<\'|\'>>\'|\'AND\'|\'OR\'|\'XOR\'',
+  '\'*\' | \'/\' | \'+\' | \'-\' | \'%\' | \'^\' | \'<<\' | \'>>\' | \'AND\' | \'OR\' | \'XOR\'',
 )
-export type ArithmeticOperationType = typeof arithmeticOperationSchema.infer
 
 const waitConditionTypeSchema = type(
-  '\'all_requests_satisfied\'|\'any_planet_import_zero\'|\'any_request_not_satisfied\'|\'any_request_zero\'|\'at_station\'|\'circuit\'|\'damage_taken\'|\'destination_full_or_no_path\'|\'empty\'|\'fluid_count\'|\'fuel_item_count_all\'|\'fuel_item_count_any\'|\'full\'|\'fuel_full\'|\'not_empty\'|\'inactivity\'|\'item_count\'|\'not_at_station\'|\'passenger_present\'|\'passenger_not_present\'|\'request_satisfied\'|\'request_not_satisfied\'|\'specific_destination_full\'|\'specific_destination_not_full\'|\'time\'',
+  '\'all_requests_satisfied\' | \'any_planet_import_zero\' | \'any_request_not_satisfied\' | \'any_request_zero\' | \'at_station\' | \'circuit\' | \'damage_taken\' | \'destination_full_or_no_path\' | \'empty\' | \'fluid_count\' | \'fuel_item_count_all\' | \'fuel_item_count_any\' | \'full\' | \'fuel_full\' | \'not_empty\' | \'inactivity\' | \'item_count\' | \'not_at_station\' | \'passenger_present\' | \'passenger_not_present\' | \'request_satisfied\' | \'request_not_satisfied\' | \'specific_destination_full\' | \'specific_destination_not_full\' | \'time\'',
 )
-export type WaitConditionTypeType = typeof waitConditionTypeSchema.infer
 
-const waitConditionCompareTypeSchema = type('\'and\'|\'or\'')
-export type WaitConditionCompareTypeType
-  = typeof waitConditionCompareTypeSchema.infer
+const waitConditionCompareTypeSchema = type('\'and\' | \'or\'')
 
-const railDirectionSchema = type('\'front\'|\'back\'')
-export type RailDirectionType = typeof railDirectionSchema.infer
+const railDirectionSchema = type('\'front\' | \'back\'')
 
-const wireConnectorIdSchema = type('1|2|3|4|5|6')
-export type WireConnectorIdType = typeof wireConnectorIdSchema.infer
+const wireConnectorIdSchema = type('1 | 2 | 3 | 4 | 5 | 6')
 
-const blueprintIconIndexSchema = type('1|2|3|4')
-export type BlueprintIconIndex = typeof blueprintIconIndexSchema.infer
-
-const jsonPrimitiveSchema = type('string|number|boolean|null')
-export type JsonPrimitive = typeof jsonPrimitiveSchema.infer
+const blueprintIconIndexSchema = type('1 | 2 | 3 | 4')
 
 export const jsonObjectSchema = type('Record<string, unknown>')
 export type JsonObjectSchema = typeof jsonObjectSchema.infer
 export type JsonObject = JsonObjectSchema
 
 export const jsonValueSchema = type(
-  'string|number|boolean|null|unknown[]|Record<string, unknown>',
+  'string | number | boolean | null | unknown[] | Record<string, unknown>',
 )
 export type JsonValueSchema = typeof jsonValueSchema.infer
 export type JsonValue = JsonValueSchema
@@ -290,13 +274,13 @@ export type CircuitNetworkSelectionSchema
 /** Simplified Draftsman condition payload used for logistic and circuit checks. */
 export const conditionSchema = type({
   /** Signal occupying the left-hand slot in the GUI. */
-  'first_signal': 'Record<string, unknown> | null | undefined',
+  'first_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Comparison operator controlling the condition. */
   'comparator?': comparatorSchema,
   /** Literal constant occupying the right-hand slot (overridden by second_signal). */
   'constant?': 'number',
   /** Optional signal occupying the right-hand slot; takes precedence over constant. */
-  'second_signal': 'Record<string, unknown> | null | undefined',
+  'second_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** When true, copies operand counts from input wires instead of using constant values. */
   'count_from_input?': 'boolean',
   /** Quality discriminator used by quality-aware conditions. */
@@ -309,13 +293,13 @@ export type ConditionSchema = typeof conditionSchema.infer
 /** Draftsman decider combinator condition payload. */
 export const deciderConditionSchema = type({
   /** Signal occupying the left-hand slot in the GUI. */
-  'first_signal': 'Record<string, unknown> | null | undefined',
+  'first_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Comparison operator controlling the condition. */
   'comparator?': comparatorSchema,
   /** Literal constant occupying the right-hand slot (overridden by second_signal). */
   'constant?': 'number',
   /** Optional signal occupying the right-hand slot; takes precedence over constant. */
-  'second_signal': 'Record<string, unknown> | null | undefined',
+  'second_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** When true, copies operand counts from input wires instead of using constant values. */
   'count_from_input?': 'boolean',
   /** Quality discriminator used by quality-aware conditions. */
@@ -334,7 +318,7 @@ export type DeciderConditionSchema = typeof deciderConditionSchema.infer
 /** Draftsman decider combinator output payload. */
 export const deciderOutputSchema = type({
   /** Output signal emitted by the combinator. */
-  'signal': 'Record<string, unknown> | null | undefined',
+  'signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Whether to source the output count from input wires. */
   'copy_count_from_input?': 'boolean',
   /** Circuit networks the output should read from when copying counts. */
@@ -347,13 +331,13 @@ export type DeciderOutputSchema = typeof deciderOutputSchema.infer
 /** Arithmetic combinator configuration payload. */
 export const arithmeticConditionSchema = type({
   /** First operand signal reference (if not using a constant). */
-  'first_signal': 'Record<string, unknown> | null | undefined',
+  'first_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Network selection for the first operand signal. */
   'first_signal_networks?': circuitNetworkSelectionSchema,
   /** First operand literal constant (used when first_signal is absent). */
   'first_constant': 'number | null | undefined',
   /** Second operand signal reference (if not using a constant). */
-  'second_signal': 'Record<string, unknown> | null | undefined',
+  'second_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Network selection for the second operand signal. */
   'second_signal_networks?': circuitNetworkSelectionSchema,
   /** Second operand literal constant (used when second_signal is absent). */
@@ -361,7 +345,7 @@ export const arithmeticConditionSchema = type({
   /** Arithmetic operator applied between the two operands. */
   'operation?': arithmeticOperationSchema,
   /** Output signal receiving the computed result. */
-  'output_signal': 'Record<string, unknown> | null | undefined',
+  'output_signal': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Network selection that determines which wires observe the output. */
   'output_signal_networks?': circuitNetworkSelectionSchema,
 })
@@ -408,7 +392,7 @@ export const manualSectionSchema = type({
   /** Section index within the constant combinator (0 ≤ index < 100). */
   'index': 'number',
   /** Ordered set of signal filters contained inside this section. */
-  'filters': 'unknown[]',
+  'filters': [signalFilterSchema, '[]'],
   /** Optional section label registered within the save. */
   'group?': 'string',
   /** Whether the section currently contributes to the output. */
@@ -421,7 +405,7 @@ export const alertParametersSchema = type({
   /** Alert type discriminator from Factorio's alert prototype table. */
   'alert_type': 'string',
   /** Icon used when presenting the alert. */
-  'icon_signal_id': 'Record<string, unknown> | null | undefined',
+  'icon_signal_id': [signalIdSchema, '|', 'null', '|', 'undefined'],
   /** Localised alert message. */
   'message?': 'string',
   /** Whether the alert should be shown on the world map. */
@@ -438,15 +422,19 @@ export const controlBehaviorSchema = type({
   /** Logistic condition attached to the entity (eg logistic chests). */
   'logistic_condition?': conditionSchema,
   /** One or more decider-style conditions backing the entity behaviour. */
-  'decider_conditions?': 'Record<string, unknown> | unknown[]',
+  'decider_conditions?': [
+    deciderConditionSchema,
+    '|',
+    [deciderConditionSchema, '[]'],
+  ],
   /** Definition of output behaviour for decider combinators. */
-  'decider_outputs?': 'Record<string, unknown> | unknown[]',
+  'decider_outputs?': [deciderOutputSchema, '|', [deciderOutputSchema, '[]']],
   /** Arithmetic combinator configuration. */
   'arithmetic_conditions?': arithmeticConditionSchema,
   /** Flat list of signal filters (legacy constant combinator format). */
-  'filters?': 'unknown[]',
+  'filters?': [signalFilterSchema, '[]'],
   /** Factorio 2.0 manual sections. */
-  'sections?': 'unknown[]',
+  'sections?': [manualSectionSchema, '[]'],
 })
 export type ControlBehaviorSchema = typeof controlBehaviorSchema.infer
 
@@ -473,24 +461,36 @@ export type PowerWireConnectionSchema = typeof powerWireConnectionSchema.infer
 /** Port definition for a specific connection point. */
 export const entityCircuitPortSchema = type({
   /** Red wire connections originating from this port. */
-  'red?': 'unknown[]',
+  'red?': [circuitWireConnectionSchema, '[]'],
   /** Green wire connections originating from this port. */
-  'green?': 'unknown[]',
+  'green?': [circuitWireConnectionSchema, '[]'],
 })
 export type EntityCircuitPortSchema = typeof entityCircuitPortSchema.infer
 
 /** Union of circuit- and power-wire connection payloads. */
-export const entityConnectionPortSchema = type(
-  'Record<string, unknown> | unknown[]',
-)
+export const entityConnectionPortSchema = type([
+  entityCircuitPortSchema,
+  '|',
+  [powerWireConnectionSchema, '[]'],
+])
 export type EntityConnectionPortSchema = typeof entityConnectionPortSchema.infer
 
 /** Map of connection point identifiers to wire definitions. */
-export const entityConnectionsSchema = type('Record<string, unknown>')
+export const entityConnectionsSchema = type({
+  '[string]': entityConnectionPortSchema,
+})
 export type EntityConnectionsSchema = typeof entityConnectionsSchema.infer
 
 /** Sparse array representing a Factorio 2.0 wire connection. */
-export const blueprintWireSchema = type('[number, number, number, number]')
+export const blueprintWireSchema = type([
+  'number',
+  ',',
+  wireConnectorIdSchema,
+  ',',
+  'number',
+  ',',
+  wireConnectorIdSchema,
+])
 export type BlueprintWireSchema = typeof blueprintWireSchema.infer
 
 /** Wait condition definition in train schedules. */
@@ -523,7 +523,7 @@ export const trainScheduleRecordSchema = type({
   /** When false, prevents the train from unloading at this stop. */
   'allows_unloading?': 'boolean',
   /** Sequence of wait conditions evaluated at this stop. */
-  'wait_conditions?': 'unknown[]',
+  'wait_conditions?': [waitConditionSchema, '[]'],
 })
 export type TrainScheduleRecordSchema = typeof trainScheduleRecordSchema.infer
 
@@ -532,9 +532,9 @@ export const trainScheduleInterruptSchema = type({
   /** Interrupt identifier. */
   'name': 'string',
   /** Conditions that must be satisfied before this interrupt activates. */
-  'conditions?': 'unknown[]',
+  'conditions?': [waitConditionSchema, '[]'],
   /** Alternative records to execute while the interrupt is active. */
-  'targets?': 'unknown[]',
+  'targets?': [trainScheduleRecordSchema, '[]'],
   /** Indicates whether nested interrupts are being resolved. */
   'inside_interrupt?': 'boolean',
 })
@@ -544,9 +544,9 @@ export type TrainScheduleInterruptSchema
 /** Complete train schedule definition. */
 export const trainScheduleSchema = type({
   /** Ordered list of planned stops. */
-  'records': 'unknown[]',
+  'records': [trainScheduleRecordSchema, '[]'],
   /** Optional interrupts evaluated alongside the base schedule. */
-  'interrupts?': 'unknown[]',
+  'interrupts?': [trainScheduleInterruptSchema, '[]'],
 })
 export type TrainScheduleSchema = typeof trainScheduleSchema.infer
 
@@ -614,9 +614,11 @@ export const numberParameterSchema = type({
 export type NumberParameterSchema = typeof numberParameterSchema.infer
 
 /** Union of all supported blueprint parameter specifications. */
-export const blueprintParameterSchema = type(
-  'idParameterSchema|numberParameterSchema',
-)
+export const blueprintParameterSchema = type([
+  idParameterSchema,
+  '|',
+  numberParameterSchema,
+])
 export type BlueprintParameterSchema = typeof blueprintParameterSchema.infer
 
 /** Blueprint tile definition. */
@@ -676,11 +678,11 @@ export const blueprintEntitySchema = type({
   /** Item pickup offset used by inserters. */
   'pickup_position?': vector2Schema,
   /** Item filter definitions (eg. belts, loaders). */
-  'filters?': 'unknown[]',
+  'filters?': [itemFilterSchema, '[]'],
   /** Logistic request filters (eg. requester chests). */
-  'request_filters?': 'unknown[]',
+  'request_filters?': [signalFilterSchema, '[]'],
   /** Logistic trash/request filters for character armor grids. */
-  'logistic_filters?': 'unknown[]',
+  'logistic_filters?': [itemFilterSchema, '[]'],
   /** Arbitrary metadata tags stored on the entity. */
   'tags?': jsonObjectSchema,
   /** Entity type hint used by certain blueprint tools. */
@@ -708,32 +710,32 @@ export const blueprintSchema = type({
   /** User-given title. Serialized. */
   'label?': 'string',
   /** Label color (RGBA 0..1). Serialized. */
-  'label_color': 'Record<string, unknown> | null | undefined',
+  'label_color': [colorRgbaSchema, '|', 'null', '|', 'undefined'],
   /** Description text (<=500 bytes). Serialized. */
   'description?': 'string',
   /** Up to 4 icons. Serialized. */
-  'icons?': 'unknown[]',
+  'icons?': [blueprintIconSchema, '[]'],
   /** 64-bit encoded Factorio version. Serialized. */
   'version': 'number',
   /** Snapping grid size; presence enables snapping. Serialized. */
-  'snapping_grid_size': 'Record<string, unknown> | null | undefined',
+  'snapping_grid_size': [vector2Schema, '|', 'null', '|', 'undefined'],
   /** Absolute vs relative snapping. Serialized. */
   'absolute_snapping?': 'boolean',
   /** Position relative to grid when absolute snapping is true. Serialized. */
   'position_relative_to_grid?': vector2Schema,
   /** Entity list. Serialized. */
-  'entities?': 'unknown[]',
+  'entities?': [blueprintEntitySchema, '[]'],
   /** Tile list. Serialized. */
-  'tiles?': 'unknown[]',
+  'tiles?': [blueprintTileSchema, '[]'],
   /** Circuit wires list (2.0 native; may be absent). Serialized. */
-  'wires?': 'unknown[]',
+  'wires?': [blueprintWireSchema, '[]'],
   /** Train schedules list. Serialized. */
-  'schedules?': 'unknown[]',
+  'schedules?': [trainScheduleAssignmentSchema, '[]'],
   /** Blueprint parameters (Factorio 2.0). Serialized. */
-  'parameters?': 'unknown[]',
+  'parameters?': [blueprintParameterSchema, '[]'],
   /** Stock connections (train couplings). Serialized. */
-  'stock_connections?': 'unknown[]',
+  'stock_connections?': [stockConnectionSchema, '[]'],
   /** Additional groups or metadata present in Draftsman exports. */
-  'groups?': 'unknown[]',
+  'groups?': [jsonObjectSchema, '[]'],
 })
 export type BlueprintSchema = typeof blueprintSchema.infer
